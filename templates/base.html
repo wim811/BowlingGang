@@ -1,14 +1,37 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Bowling Gang</title>
-    </head>
-    <body>
-        <div>
-
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/bowling.css">
+      
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="{{url_for('home')}}" class="active">Home</a>
+        <a href="{{url_for('ploeg')}}">Ploeg</a>
+        <a href="{{url_for('reglement')}}">Reglement</a>
+        <div class="dropdown">
+            <button class="dropbtn">Competitie
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{{url_for('tournooi25')}}">Tournooi 2025</a>
+               
+            </div>
         </div>
-        {% block content %}
+        <a href="{{url_for('statistieken')}}">Statistieken</a>
 
-        {% endblock %}
-    </body>
+        <h2 class="navmiddle">Bowling Gang</h2>
+
+
+        <a href="javascript:coid(0);" class="icon" onclick="myFunction()">&#9776</a>
+    </div>
+    <script src="/static/bowling.js"></script>
+<div class="content">
+    {% block content %}
+
+    {% endblock %}
+
+   
+</div>
+</body>
 </html>

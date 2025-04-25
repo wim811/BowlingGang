@@ -1,0 +1,50 @@
+{% extends'base.html' %}
+
+
+
+
+{% block content %}
+<div class="topnav" id="myTopnav">
+  <a href="{{url_for('admin_leden')}}" class="active">Leden</a>
+  <a href="{{url_for('admin_tournooien')}}">Tournooien</a>
+  <a href="{{url_for('admin_statistieken')}}">Statistieken</a>
+  
+  
+
+
+  <a href="javascript:coid(0);" class="icon" onclick="myFunction()">&#9776</a>
+</div>
+<div class="membersList">
+    <h1>Geef nieuwe Leden in: </h1>
+    <table>
+        <tr>
+            <td class="tabletd"><form name="member_form" action="/admin_leden"  onsubmit="return validateForm()" method="POST">
+                    <input type="text" placeholder="Deelnemer naam" name="DName"><br>
+                    <input type="text" placeholder="Deelnemer telefoonnummer" name="DPhone"><br>
+                    <input type="text" placeholder="Deelnemer email" name="DEmail" ><br>
+                    <input type="submit" value="Opslaan">
+            </form></td>
+           
+        </tr>
+    </table>
+    
+    <table>
+        <tr>
+            <th>Naam</th>
+            <th>Lid sinds</th>
+        </tr>
+        
+            {% for member in members_list %}
+            <tr>
+                <td>{{member.name}}</td>
+                <td>{{member.date}}</td>
+               
+            </tr>
+            {% endfor %}
+        
+    </table>
+   
+
+</div>
+<script src="/static/bowling.js"></script>
+{% endblock %}
