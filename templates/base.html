@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="/static/bowling.css">
-      
-</head>
-<body>
-    <div class="topnav" id="myTopnav">
+    <head>
+        <title>Bowling Gang</title>
+        <link rel="stylesheet" href="/static/bowling.css" >
+    </head>
+    <body>
+
+        <div class="general-title"> Bowling Gang</div>
+       
+         {% if session.get('logged_in') %}
+         <div class="username">
+          Ingelogd als:{{ session.get('username', "Guest") }}
+        </div>
+
+        <div class="navigation">
+            <div class="topnav" id="myTopnav">
         <a href="{{url_for('home')}}" class="active">Home</a>
-        <a href="{{url_for('ploeg')}}">Ploeg</a>
-        <a href="{{url_for('reglement')}}">Reglement</a>
+        <a href="">Ploeg</a>
+        <a href="">Reglement</a>
         <div class="dropdown">
             <button class="dropbtn">Competitie
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="{{url_for('tournooi25')}}">Tournooi 2025</a>
+                <a href="">Tournooi 2025</a>
                
             </div>
         </div>
-        <a href="{{url_for('statistieken')}}">Statistieken</a>
-
-        <h2 class="navmiddle">Bowling Gang</h2>
-
-
+        <a href="">Statistieken</a>
+       {% if session.get('role') == 'admin' %}
+        <a href="{{url_for('admin')}}">Administration</a>
+        {% endif %}
         <a href="javascript:coid(0);" class="icon" onclick="myFunction()">&#9776</a>
     </div>
     <script src="/static/bowling.js"></script>
-<div class="content">
+
+        </div>
+        {% endif %}
     {% block content %}
 
-    {% endblock %}
 
-   
-</div>
-</body>
+
+    {% endblock %}
+    </body>
 </html>

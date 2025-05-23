@@ -1,9 +1,10 @@
-{% extends'base.html' %}
-
-
-
+{% extends 'base.html' %}
 
 {% block content %}
-jlkfjlfkjlfkjflkjflkjflfjlkfjlfjflkj
 
+ {% if not session.get('logged_in') %}
+<div class="loginBtn">
+<a href="{{url_for('login')}}"><img src="/static/loginbowlingball.png"></a>
+</div>
+{% endif %}
 {% endblock %}

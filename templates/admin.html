@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% if session.get('role') == 'admin' %}
+        <div class="adminnav">
+            <a href="{{url_for('register')}}">Registreer leden</a>
+            <a href="{{url_for('statistics')}}">statistieken</a>
+        </div>
+        {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+{% if session.get('role') == 'admin' %}
+        <div class="adminnav">
+            <a href="{{url_for('register')}}">Registreer leden</a>
+            <a href="">statistieken</a>
+        </div>
+        {% endif %}
+<div class="admin">
+    <form class="regform" action="{{url_for('register')}}" method="POST">
+  <label for="name">Naam:</label><br>
+  <input type="text" id="name" name="name"><br>
+  <label for="email">Email:</label><br>
+  <input type="text" id="email" name="email"><br>
+   <label for="username">username:</label><br>
+  <input type="text" id="username" name="username"><br>
+   <label for="password">Paswoord:</label><br>
+  <input type="text" id="password" name="password"><br>
+   <label for="role">Kies een rol:</label><br>
+    <select name="role" id="role">
+        <option value="lid">Lid</option>
+        <option value="admin">Administrator</option>
+     
+    </select><br><br>
+    <input type="submit" value="Registreer">
+</form>
+</div>
+
+
+{% endblock %}
